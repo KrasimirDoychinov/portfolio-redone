@@ -9,16 +9,26 @@
   --white: #ededed;
 }
 
+/* .grid-item,
+header,
+main,
+nav,
+aside,
+footer,
+div {
+  border: 1px solid #377eff;
+} */
+
 .red {
   color: var(--red);
 }
 
 .start-link {
-  transition: color .25s;
+  transition: color 0.25s;
 }
 
 .start-link:hover {
-  transition: .25s;
+  transition: 0.25s;
   color: var(--dark-red);
   cursor: pointer;
 }
@@ -32,7 +42,6 @@
   background-color: var(--light-dark);
   transition: background-color 0.5s;
 }
-
 
 /* UTILS */
 
@@ -61,15 +70,14 @@ ul {
 
 body {
   display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: 
+  grid-template-areas:
     "header"
     "main  "
     "footer";
   background-color: var(--dark);
   font-family: "Cascadia Mono", sans-serif;
   font-size: 18px;
-  padding: 1em
+  padding: 1em;
 }
 
 header {
@@ -79,7 +87,7 @@ header {
 main {
   display: grid;
   grid-template-rows: 90vh 100vh 100vh;
-  grid-template-areas: 
+  grid-template-areas:
     "introduction"
     "about       "
     "exp         ";
@@ -95,28 +103,54 @@ footer {
   grid-area: footer;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 650px) {
   body {
-    grid-template: auto 80% 10% / 5em auto;
-    grid-template-areas: 
+    grid-template: 5em 100% 5em / 5em auto;
+    grid-template-areas:
       "header header"
       "aside  main "
       "footer footer";
   }
 
   aside {
-    display: inline-block;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    width: 40px;
+    position: fixed;
+    bottom: 100px;
+    z-index: 10;
   }
-}
 
-.grid-item,
-header,
-main,
-nav,
-aside,
-footer,
-div {
-    border: 1px solid #377EFF;
+  aside > a {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: start;
+    white-space: nowrap;
+    text-decoration: none;
+    transform: rotate(-90deg);
+    color: var(--white);
+    font-size: 15px;
+    transition: color 0.25s, font-size 0.25s;
+  }
+
+  aside > a:hover {
+    color: var(--red);
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.25s;
+  }
+
+  aside > a::before {
+    content: " ";
+    display: block;
+    position: relative;
+    height: 1px;
+    width: 15em;
+    margin-left: 10px;
+    background: var(--gray);
+  }
 }
 
 /* BODY */
@@ -137,7 +171,6 @@ div {
   display: none;
   position: relative;
   height: 1px;
-  width: 400px;
   margin-right: 10px;
   background: var(--gray);
 }
@@ -150,6 +183,36 @@ div {
   width: 100%;
   margin-left: 10px;
   background: var(--gray);
+}
+
+@media screen and (min-width: 768px) {
+  .heading {
+    justify-content: center;
+  }
+  .heading::before {
+    width: 8em;
+    display: block;
+  }
+
+  .heading::after {
+    width: 8em;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .heading {
+    justify-content: center;
+  }
+  .heading::before {
+    width: 10em;
+    display: block;
+  }
+
+  .heading::after {
+    width: 10em;
+    display: block;
+  }
 }
 
 .navbar > li > a {
@@ -186,6 +249,11 @@ header {
   height: 75px;
 }
 
+@media screen and (min-width: 768px) {
+  .navbar {
+    flex-flow: row;
+  }
+}
 /* HEADER */
 
 /* INTRODUCTION */
@@ -209,41 +277,87 @@ header {
   font-size: 25px;
 }
 
-.introduction-section  p {
+.introduction-section p {
   font-size: 15px;
   padding: 0 1.5em;
 }
 
+@media screen and (min-width: 650px) {
+  .introduction-section {
+    font-size: 30px;
+  }
+
+  .introduction-section p {
+    font-size: 18px;
+    max-width: 40em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .introduction-section {
+    font-size: 35px;
+  }
+
+  .introduction-section p {
+    font-size: 21px;
+    max-width: 40em;
+  }
+}
 /* INTRODUCTION */
 
 /* ABOUT ME */
 
 .about-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
   grid-area: about;
 }
 
 .about-main {
   display: flex;
   flex-flow: column;
-  align-self: center;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .about-desc {
   margin-top: 1em;
+  max-width: 40em;
 }
 
-.about-img {
-  flex: 1;
-  justify-self: center;
-  align-self: center;
+@media screen and (min-width: 650px) {
+  .about-desc {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-desc {
+    font-size: 21px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .about-main {
+    flex-flow: row;
+  }
+
+  .about-img {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 /* ABOUT ME */
 
-
 /* EXPERIENCE */
 
 .exp-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
   grid-area: exp;
   overflow-x: auto;
 }
@@ -280,5 +394,32 @@ header {
   height: 30vh;
 }
 
-/* EXPERIENCE */
+@media screen and (min-width: 768px) {
+  .exp-main {
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .exp-nav {
+    flex-flow: column;
+    align-items: flex-start;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    gap: 0;
+  }
+
+  .exp-nav li {
+    border-left: 1px solid var(--gray);
+    padding: 1em;
+    transition: 0.5s;
+  }
+
+  .exp-desc {
+    align-self: flex-start;
+    margin-top: 1em;
+    width: 40vw;
+  }
+}
+
+/* EXPERIENCE */
