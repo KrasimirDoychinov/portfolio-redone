@@ -23,11 +23,11 @@ div {
   color: var(--red);
 }
 
-.start-link {
+.clickable-link {
   transition: color 0.25s;
 }
 
-.start-link:hover {
+.clickable-link:hover {
   transition: 0.25s;
   color: var(--dark-red);
   cursor: pointer;
@@ -41,6 +41,14 @@ div {
   border-bottom: 1px solid var(--red);
   background-color: var(--light-dark);
   transition: background-color 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+  .clicked-link {
+    border-left: 1px solid var(--red) !important;
+    background-color: var(--light-dark);
+    transition: background-color 0.5s;
+  }
 }
 
 /* UTILS */
@@ -86,9 +94,10 @@ header {
 
 main {
   display: grid;
-  grid-template-rows: 90vh 100vh 100vh;
+  grid-template-rows: 90vh 100vh 100vh 100vh;
   grid-template-areas:
     "introduction"
+    "skills      "
     "about       "
     "exp         ";
   grid-area: main;
@@ -148,7 +157,7 @@ footer {
     position: relative;
     height: 1px;
     width: 15em;
-    margin-left: 10px;
+    margin-right: 2em;
     background: var(--gray);
   }
 }
@@ -156,6 +165,10 @@ footer {
 /* BODY */
 
 /* DEFAULTS */
+
+.section {
+  width: 100%;
+}
 
 .heading {
   display: flex;
@@ -305,6 +318,78 @@ header {
 }
 /* INTRODUCTION */
 
+/* SKILLS */
+
+.skills-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  grid-area: skills;
+}
+
+.skill {
+  margin: 1em 0;
+}
+
+.skill-name {
+  margin-bottom: .5em;
+}
+
+.skill-bar {
+  height: 14px;
+  background-color: var(--gray);
+  border-radius: 5px;
+}
+
+.skill-per {
+  height: 14px;
+  background-color: var(--red);
+  border-radius: 5px;
+  position: relative;
+}
+
+.skill-per::before {
+  color: var(--dark);
+  z-index: 11;
+  content: attr(per);
+  position: absolute;
+  padding: 4px 6px;
+  background-color: var(--white);
+  border-radius: 4px;
+  font-size: 12px;
+  top: -35px;
+  right: 0;
+  transform: translateX(50%);
+}
+
+.skill-per::after {
+  content: " ";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--white);
+  top: -20px;
+  right: 0;
+  transform: translateX(50%) rotate(45deg);
+  border-radius: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .skills-main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }  
+
+  .skill {
+    width: 60%;
+  }
+}
+
+/* SKILLS */
+
 /* ABOUT ME */
 
 .about-wrapper {
@@ -323,7 +408,7 @@ header {
 }
 
 .about-desc {
-  margin-top: 1em;
+  margin: 1em 0 2em 0;
   max-width: 40em;
 }
 
@@ -342,6 +427,11 @@ header {
 @media screen and (min-width: 1000px) {
   .about-main {
     flex-flow: row;
+    justify-content: center;
+  }
+
+  .about-desc {
+    margin-right: 1em;
   }
 
   .about-img {
@@ -386,12 +476,21 @@ header {
 .exp-nav li {
   padding: 1em;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .exp-desc {
   align-self: flex-start;
   margin-top: 0.5em;
   height: 30vh;
+}
+
+.exp-details {
+  margin-top: 1em;
+}
+
+.exp-details > li {
+  padding: 0.2em 0.5em;
 }
 
 @media screen and (min-width: 768px) {
@@ -411,13 +510,13 @@ header {
 
   .exp-nav li {
     border-left: 1px solid var(--gray);
+    border-bottom: 0px;
     padding: 1em;
-    transition: 0.5s;
   }
 
   .exp-desc {
     align-self: flex-start;
-    margin-top: 1em;
+    margin: 1em 0 0 2em;
     width: 40vw;
   }
 }
