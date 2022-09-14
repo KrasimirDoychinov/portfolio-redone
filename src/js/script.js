@@ -1,5 +1,17 @@
 let expLinks = Array.from(document.querySelectorAll('.exp-link'))
 let main = document.querySelector('main')
+let loader = document.querySelector('.loader')
+let body = document.querySelector('body')
+
+loader.addEventListener('animationstart', e => {
+  body.style.overflow = 'hidden'
+})
+
+loader.addEventListener('animationend', e => {
+  if (e.animationName == 'loaderFadeOut') {
+    body.style.overflow = 'auto'
+  }
+})
 
 expLinks.forEach(x => {
   x.addEventListener('click', e => {
@@ -20,7 +32,6 @@ expLinks.forEach(x => {
 })
 
 let menuToggle = document.querySelector('.toggle')
-let body = document.querySelector('body')
 let sideNav = document.querySelector('.side-navigation')
 menuToggle.addEventListener('click', e => {
   toggleSideNav()
@@ -29,7 +40,7 @@ menuToggle.addEventListener('click', e => {
 let allLinks = Array.from(document.querySelectorAll('a'))
 
 allLinks.forEach(x => {
-  x.addEventListener('click', e => {
+  x.addEventListener('click', () => {
     menuToggle.classList.remove('active')
     body.classList.remove('noscroll')
     sideNav.classList.remove('active')

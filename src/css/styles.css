@@ -113,7 +113,30 @@ main {
     "skills      "
     "about       "
     "exp         ";
+  opacity: 0;
   grid-area: main;
+  animation: moveInMain 1.5s ease forwards, fadeInMain 3s ease forwards;
+  animation-delay: 4s, 4s;
+}
+
+@keyframes moveInMain {
+  from {
+    transform: translateY(25em);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .99;
+  }
 }
 
 aside {
@@ -255,19 +278,174 @@ footer {
 
 /* DEFAULTS */
 
+/* LOADER */
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  z-index: 12;
+  animation: loaderFadeOut 3s ease-in-out forwards;
+  animation-delay: 1.5s;
+  overflow: hidden;
+}
+
+@keyframes loaderFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.loader span {
+  position: absolute;
+  width: 50px;
+  height: 7px;
+  border-radius: 1px;
+  background-color: var(--red);
+  animation: spanSmall 1s ease-in-out;
+}
+
+@keyframes spanSmall {
+  from {
+    width: 0;
+    transform: rotateY(180deg);
+  }
+
+  to {
+    width: 50px;
+  }
+}
+
+@keyframes spanBig {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 57px;
+  }
+}
+
+.loader span:nth-of-type(1) {
+  left: 20%;
+  top: 24%;
+  transform: rotate(-30deg);
+}
+
+.loader span:nth-of-type(2) {
+  width: 57px;
+  left: 4%;
+  bottom: 46%;
+  transform: rotate(90deg);
+  animation: spanBig 1s ease-in-out;
+}
+
+.loader span:nth-of-type(3) {
+  left: 20%;
+  bottom: 20%;
+  transform: rotate(30deg);
+}
+
+.loader span:nth-of-type(4) {
+  right: 20%;
+  bottom: 20%;
+  transform: rotate(-30deg);
+}
+
+.loader span:nth-of-type(5) {
+  width: 57px;
+  right: 4%;
+  bottom: 46%;
+  transform: rotate(90deg);
+  animation: spanBig 1s ease-in-out;
+}
+
+.loader span:nth-of-type(6) {
+  right: 20%;
+  top: 24%;
+  transform: rotate(30deg);
+}
+
+.loader p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  animation: moveInP 1s ease-in-out forwards;
+}
+
+@keyframes moveInP {
+  from {
+    opacity: 0;
+    transform: translate(50%, -50%);
+  }
+
+  25% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+/* LOADER */
+
 /* HEADER */
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  opacity: 0;
+  z-index: 2;
+  animation: moveInHeader 1s ease forwards, fadeInHeader 2s ease forwards;
+  animation-delay: 3s, 3s;
 }
+
+@keyframes moveInHeader {
+  from {
+    transform: translateY(-10em);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* TOGGLE */
 
 .toggle {
   width: 70px;
   height: 70px;
   background: var(--light-dark);
-  box-shadow: 0 10px 20px rgba(0,0,0,0,0.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0, 0.08);
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -284,34 +462,33 @@ header {
   left: 15px;
   background-color: var(--red);
   border-radius: 4px;
-  transition: .5s;
+  transition: 0.5s;
   z-index: 100;
 }
 
-.toggle span:nth-child(1){
+.toggle span:nth-child(1) {
   transform: translateY(-15px);
   width: 25px;
 }
 
-.toggle span:nth-child(2){
+.toggle span:nth-child(2) {
   transform: translateY(15px);
   width: 15px;
 }
 
-.toggle.active span:nth-child(1){
+.toggle.active span:nth-child(1) {
   width: 40px;
   transform: translateY(0px) rotate(45deg);
 }
 
-.toggle.active span:nth-child(2){
+.toggle.active span:nth-child(2) {
   width: 40px;
   transform: translateY(0px) rotate(315deg);
 }
 
-.toggle.active span:nth-child(3){
+.toggle.active span:nth-child(3) {
   transform: translateX(100px);
 }
-
 
 .side-navigation {
   display: flex;
@@ -323,12 +500,12 @@ header {
   width: 60vw;
   height: 100vh;
   background-color: var(--light-dark);
-  z-index: 12;
-  transition: .5s;
+  z-index: 1;
+  transition: 0.5s;
 }
 
 .side-navigation.active {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .navbar-side {
@@ -336,6 +513,8 @@ header {
   flex-flow: column;
   gap: 5em;
 }
+
+/* TOGGLE */
 
 .navbar {
   display: none;
@@ -428,7 +607,7 @@ header {
 }
 
 .skill-name {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .skill-bar {
@@ -476,7 +655,7 @@ header {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-  }  
+  }
 
   .skill {
     width: 60%;
