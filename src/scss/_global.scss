@@ -1,0 +1,249 @@
+@import 'utils';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  color: $white;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+  transition: .25s;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main  "
+    "footer";
+  background-color: $dark;
+  font-family: "Cascadia Mono", sans-serif;
+  font-size: 18px;
+  padding: 1em;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  display: grid;
+  grid-template-rows: 90vh 100vh 100vh 100vh;
+  grid-template-areas:
+    "introduction"
+    "skills      "
+    "about       "
+    "exp         ";
+  opacity: 0;
+  grid-area: main;
+  animation: moveInMain 1.5s ease forwards, fadeInMain 3s ease forwards;
+  animation-delay: 4s, 4s;
+}
+
+@keyframes moveInMain {
+  from {
+    transform: translateY(25em);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: .99;
+  }
+}
+
+aside {
+  grid-area: aside;
+  display: none;
+}
+
+footer {
+  grid-area: footer;
+}
+
+@media screen and (min-width: 650px) {
+  body {
+    grid-template: 5em 100% 5em / 5em auto;
+    grid-template-areas:
+      "header header"
+      "aside  main "
+      "footer footer";
+  }
+
+  aside {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    width: 40px;
+    position: fixed;
+    bottom: 100px;
+    z-index: 10;
+
+    a {
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: start;
+      white-space: nowrap;
+      text-decoration: none;
+      transform: rotate(-90deg);
+      color: $white;
+      font-size: 15px;
+      transition: color 0.25s, font-size 0.25s;
+    }
+
+    a:hover {
+      color: $red;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.25s;
+    }
+
+    a::before {
+      content: " ";
+      display: block;
+      position: relative;
+      height: 1px;
+      width: 15em;
+      margin-right: 2em;
+      background: $gray;
+    }
+  }
+}
+
+.section {
+  width: 100%;
+}
+
+.heading {
+  display: flex;
+  font-size: 26px;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+
+  &::before {
+    content: " ";
+    display: none;
+    position: relative;
+    height: 1px;
+    margin-right: 10px;
+    background: $gray;
+  }
+
+  &::after {
+    content: " ";
+    display: block;
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin-left: 10px;
+    background: $gray;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .heading {
+    justify-content: center;
+
+    &::before {
+      width: 8em;
+      display: block;
+    }
+
+    &::after {
+      width: 8em;
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .heading {
+    justify-content: center;
+
+    &::before {
+      width: 10em;
+      display: block;
+    }
+  
+    &::after {
+      width: 10em;
+      display: block;
+    }
+  }
+}
+
+
+.navbar > li > a {
+  border-bottom: 0px solid transparent;
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $red;
+  }
+}
+
+.red {
+  color: $red;
+}
+
+.clickable-link {
+  transition: color 0.25s;
+
+  &-link:hover {
+    transition: 0.25s;
+    color: $dark-red;
+    cursor: pointer;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.clicked-link {
+  border-bottom: 1px solid $red;
+  background-color: $light-dark;
+  transition: background-color 0.5s;
+
+  @media screen and (min-width: 768px){
+    & {
+      border-left: 1px solid $red !important;
+      background-color: $light-dark;
+      transition: background-color 0.5s;
+    }
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+.blur {
+  filter: blur(5px);
+}

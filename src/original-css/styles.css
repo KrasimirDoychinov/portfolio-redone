@@ -445,7 +445,6 @@ header {
   width: 70px;
   height: 70px;
   background: var(--light-dark);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0, 0.08);
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -521,8 +520,8 @@ header {
 }
 
 .header-img {
-  width: 75px;
-  height: 75px;
+  width: 125px;
+  height: 100px;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,0 +1,83 @@
+.exp-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  grid-area: exp;
+  overflow-x: auto;
+
+  
+}
+
+.exp-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  
+  
+}
+
+.exp-desc {
+  align-self: flex-start;
+  margin-top: 0.5em;
+  height: 30vh;
+}
+
+.exp-details {
+  margin-top: 1em;
+
+  li {
+    padding: 0.2em 0.5em;
+  }
+}
+
+.exp-nav {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  margin: 1em 0;
+  padding-bottom: 1em;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  li {
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .exp-main {
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .exp-nav {
+    flex-flow: column;
+    align-items: flex-start;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    gap: 0;
+
+    li {
+      border-left: 1px solid $gray;
+      border-bottom: 0px;
+      padding: 1em;
+    }
+  }
+
+  .exp-desc {
+    align-self: flex-start;
+    margin: 1em 0 0 2em;
+    width: 40vw;
+  }
+  
+}

@@ -1,0 +1,136 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  z-index: 2;
+  animation: moveInHeader 1s ease forwards, fadeInHeader 2s ease forwards;
+  animation-delay: 3s, 3s;
+}
+
+@keyframes moveInHeader {
+  from {
+    transform: translateY(-10em);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* TOGGLE */
+
+.toggle {
+  width: 70px;
+  height: 70px;
+  background: $light-dark;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  span {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    left: 15px;
+    background-color: $red;
+    border-radius: 4px;
+    transition: 0.5s;
+    z-index: 100;
+
+    &:nth-child(1) {
+      transform: translateY(-15px);
+      width: 25px;
+    }
+  
+    &:nth-child(2) {
+      transform: translateY(15px);
+      width: 15px;
+    }
+  }
+}
+
+.toggle.active {
+  span {
+    &:nth-child(1) {
+      width: 40px;
+      transform: translateY(0px) rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      width: 40px;
+      transform: translateY(0px) rotate(315deg);
+    }
+
+    &:nth-child(3) {
+      transform: translateX(100px);
+    }
+  }
+}
+
+.side-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: -100%;
+  position: fixed;
+  width: 60vw;
+  height: 100vh;
+  background-color: $light-dark;
+  z-index: 1;
+  transition: 0.5s;
+
+  &.active {
+    transition: 0.5s;
+
+  }
+}
+
+.navbar-side {
+  display: flex;
+  flex-flow: column;
+  gap: 5em;
+}
+
+/* TOGGLE */
+
+.navbar {
+  display: none;
+}
+
+.header-img {
+  width: 125px;
+  height: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .toggle {
+    display: none;
+  }
+
+  .navbar {
+    display: flex;
+    flex-flow: row;
+    font-size: 15px;
+    gap: 1em;
+  }
+
+  .side-navigation {
+    display: none;
+  }
+}

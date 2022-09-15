@@ -1,0 +1,44 @@
+.introduction-wrapper {
+  grid-area: introduction;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-bottom: 20em;
+}
+
+.introduction-section {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.5em;
+  font-size: 25px;
+
+  p {
+    font-size: 15px;
+    padding: 0 1.5em;
+  }
+}
+
+
+@media screen and (min-width: 650px) {
+  .introduction-section {
+    font-size: 30px;
+
+    p {
+      font-size: 18px;
+      max-width: 40em;
+    }
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .introduction-section {
+    font-size: 35px;
+
+    p {
+      font-size: 21px;
+      max-width: 40em;
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import 'utils';
+
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  z-index: 12;
+  animation: loaderFadeOut 3s ease-in-out forwards;
+  animation-delay: 1.5s;
+  overflow: hidden;
+
+  span {
+    position: absolute;
+    width: 50px;
+    height: 7px;
+    border-radius: 1px;
+    background-color: $red;
+    animation: spanSmall 1s ease-in-out;
+
+    &:nth-of-type(1) {
+      left: 20%;
+      top: 24%;
+      transform: rotate(-30deg);
+    }
+
+    &:nth-of-type(2) {
+      width: 57px;
+      left: 4%;
+      bottom: 46%;
+      transform: rotate(90deg);
+      animation: spanBig 1s ease-in-out;
+    }
+
+    &:nth-of-type(3) {
+      left: 20%;
+      bottom: 20%;
+      transform: rotate(30deg);
+    }
+
+    &:nth-of-type(4) {
+      right: 20%;
+      bottom: 20%;
+      transform: rotate(-30deg);
+    }
+
+    &:nth-of-type(5) {
+      width: 57px;
+      right: 4%;
+      bottom: 46%;
+      transform: rotate(90deg);
+      animation: spanBig 1s ease-in-out;
+    }
+
+    &:nth-of-type(6) {
+      right: 20%;
+      top: 24%;
+      transform: rotate(30deg);
+    }
+  }
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    animation: moveInP 1s ease-in-out forwards;
+  }
+}
+
+@keyframes loaderFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes spanSmall {
+  from {
+    width: 0;
+    transform: rotateY(180deg);
+  }
+
+  to {
+    width: 50px;
+  }
+}
+
+@keyframes spanBig {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 57px;
+  }
+}
+
+@keyframes moveInP {
+  from {
+    opacity: 0;
+    transform: translate(50%, -50%);
+  }
+
+  25% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
