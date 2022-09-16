@@ -1,7 +1,7 @@
 # portfolio-redone
 
-The site was built so I can practice and learn HTML/CSS/SASS.
-
+* The site was built so I can practice and learn HTML/CSS/SASS.
+* Responsive for both mobile and desktop
 
 ![image](https://user-images.githubusercontent.com/65718191/190647912-9f270f3e-03ca-48be-a556-80e43fb02289.png)
 ![image](https://user-images.githubusercontent.com/65718191/190647940-17f5747c-5ebc-43c5-a7ec-418d76860277.png)
