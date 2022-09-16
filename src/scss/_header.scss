@@ -118,6 +118,21 @@ header {
   height: 100px;
 }
 
+.resume {
+  background-color: $light-dark;
+  border: 1px solid $red !important;
+  padding: 1em;
+  border-radius: 10%;
+  transition: .25s;
+
+  &:hover {
+    transform: scale(1);
+    background-color: $red;
+    transition: .25s;
+    padding-bottom: 1em !important;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .toggle {
     display: none;
